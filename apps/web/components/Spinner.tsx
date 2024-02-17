@@ -2,7 +2,7 @@ export const Spinner = ({ size = 24 }: { size?: number }) => (
   <div>
     <svg
       aria-hidden="true"
-      className="mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-primary"
+      className=" text-gray-200 animate-spin dark:text-gray-600 fill-primary"
       style={{ height: `${size}px`, width: `${size}px` }}
       viewBox="0 0 100 100"
       fill="none"

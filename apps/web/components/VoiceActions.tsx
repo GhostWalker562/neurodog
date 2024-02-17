@@ -1,10 +1,12 @@
 "use client";
 
+import useTranscribeAction from "@/lib/api/mutations/useTranscribeAction";
 import useAudioPermissions from "@/lib/api/queries/useAudioPermissions";
+import { useTranscript } from "@/lib/api/stores/recordings";
 import useRecord from "@/lib/api/useRecord";
 import { cn } from "@/lib/utils";
 import { Mic, Text } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "./ui/button";
 import {
   CommandDialog,
@@ -13,7 +15,7 @@ import {
   CommandItem,
   CommandList,
 } from "./ui/command";
-import { useTranscript } from "@/lib/api/stores/recordings";
+import Spinner from "./Spinner";
 
 interface VoiceActionsProps {}
 
@@ -22,6 +24,7 @@ function VoiceActions({}: VoiceActionsProps): JSX.Element {
   const permissions = useAudioPermissions();
   const { startRecording, stopRecording, isRecording } = useRecord();
   const { transcript, reset } = useTranscript();
+  const { mutate, isPending } = useTranscribeAction();
 
   return (
     <>
@@ -38,24 +41,36 @@ function VoiceActions({}: VoiceActionsProps): JSX.Element {
             "animate-pulse text-green-500 border-green-500 bg-green-500/10 transition-all"
         )}
       >
-        <Mic className="mr-2 w-4 h-4" />
-        {!permissions.data && !permissions.isLoading
-          ? "Requires Permissions"
-          : "Voice Actions"}
+        {isPending ? (
+          <Spinner />
+        ) : (
+          <>
+            <Mic className="mr-2 w-4 h-4" />
+            {!permissions.data && !permissions.isLoading
+              ? "Requires Permissions"
+              : "Voice Actions"}
+          </>
+        )}
       </Button>
       <CommandDialog
         open={open}
         onOpenChange={(e) => {
-          if (!e) stopRecording();
+          if (!e) {
+            if (transcript) mutate(transcript);
+            stopRecording();
+          }
           setOpen(e);
         }}
       >
-        <CommandInput placeholder="Listening for instructions..." disabled />
+        <CommandInput
+          placeholder={`Listening for instructions... (say: "I want to see my dog")`}
+          disabled
+        />
         <CommandList>
           <CommandGroup heading="Transcript">
             <CommandItem>
               <Text className="mr-2 h-4 w-4" />
-              <span>{transcript}</span>
+              {<span>{transcript}</span>}
             </CommandItem>
           </CommandGroup>
         </CommandList>

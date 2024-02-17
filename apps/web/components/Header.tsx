@@ -1,10 +1,7 @@
-import React from "react";
+import { User } from "lucia";
 import { MainNav } from "./MainNav";
-import { Button } from "./ui/button";
-import { Mic } from "lucide-react";
 import { UserNav } from "./UserNav";
 import Logo from "./assets/Logo";
-import { User } from "lucia";
 import VoiceActions from "./VoiceActions";
 
 interface HeaderProps {
