@@ -7,6 +7,11 @@ const nextConfig = {
         hostname: "**.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "**.co",
+        port: "",
+      },
     ],
   },
   webpack: (config) => {

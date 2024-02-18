@@ -5,7 +5,7 @@ export function AvailableActions() {
     <div className="space-y-8">
       <div className="flex items-center">
         <Avatar className="h-9 w-9">
-          <AvatarFallback>🐒</AvatarFallback>
+          <AvatarFallback>🙇‍♂️</AvatarFallback>
         </Avatar>
         <div className="ml-4 space-y-1">
           <p className="text-sm font-medium leading-none">{`"Bow for me?"`}</p>
@@ -17,7 +17,7 @@ export function AvailableActions() {
       </div>
       <div className="flex items-center">
         <Avatar className="flex h-9 w-9 items-center justify-center space-y-0 border">
-          <AvatarFallback>🙇‍♂️</AvatarFallback>
+          <AvatarFallback>🐒</AvatarFallback>
         </Avatar>
         <div className="ml-4 space-y-1">
           <p className="text-sm font-medium leading-none">{`"Can you sit?"`}</p>

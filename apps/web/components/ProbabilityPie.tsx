@@ -1,7 +1,7 @@
 import React from "react";
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+const COLORS = ["#E5E7EB", "#7B39ED", "#FFBB28", "#FF8042"];
 
 interface CalmProps {
   probability: number;

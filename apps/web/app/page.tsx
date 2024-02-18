@@ -9,6 +9,7 @@ import Logo from "@/components/assets/Logo";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function LandingPage() {
   return (
@@ -43,25 +44,34 @@ export default function LandingPage() {
                   Key Features
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-                  Faster iteration. More innovation.
+                  Deeper connections. More innovation.
                 </h2>
                 <p className="max-w-[900px] text-neutral-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-neutral-400">
-                  The platform for rapid progress. Let your team focus on
-                  shipping features instead of managing infrastructure with
-                  automated CI/CD.
+                  This platform aims to provide an automated experience towards
+                  caretaking and compassion for the elderly. Developed for an
+                  accessible and seamless user experiencie.
                 </p>
               </div>
             </div>
             <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-10">
-              <div className="mx-auto aspect-video overflow-hidden bg-neutral-100 dark:bg-neutral-800 rounded-xl object-cover object-center sm:w-full lg:order-last" />
+              <div className="mx-auto aspect-video overflow-hidden bg-neutral-100 dark:bg-neutral-800 rounded-xl object-cover object-center sm:w-full lg:order-last">
+                <Image
+                  src={
+                    "https://i.ibb.co/2yNYd6w/Screenshot-2024-02-18-at-12-02-30-AM.png"
+                  }
+                  alt="Robot Dog looking at  guy"
+                  width={500}
+                  height={300}
+                />
+              </div>
               <div className="flex flex-col justify-center space-y-4">
                 <ul className="grid gap-6">
                   <li>
                     <div className="grid gap-1">
-                      <h3 className="text-xl font-bold">Collaboration</h3>
+                      <h3 className="text-xl font-bold">Voice Control</h3>
                       <p className="text-neutral-500 dark:text-neutral-400">
-                        Make collaboration seamless with built-in code review
-                        tools.
+                        Our platforms and features all come with voice
+                        capabilities enabling a more accessible experience.
                       </p>
                     </div>
                   </li>
@@ -69,16 +79,17 @@ export default function LandingPage() {
                     <div className="grid gap-1">
                       <h3 className="text-xl font-bold">Automation</h3>
                       <p className="text-neutral-500 dark:text-neutral-400">
-                        Automate your workflow with continuous integration.
+                        Our service dogs understand your emotions and will come
+                        to your side when you need it the most.
                       </p>
                     </div>
                   </li>
                   <li>
                     <div className="grid gap-1">
-                      <h3 className="text-xl font-bold">Scale</h3>
+                      <h3 className="text-xl font-bold">Power by AI</h3>
                       <p className="text-neutral-500 dark:text-neutral-400">
-                        Deploy to the cloud with a single click and scale with
-                        ease.
+                        Our platforms allow us a more personalized experience
+                        through natural language comprehension.
                       </p>
                     </div>
                   </li>
@@ -94,24 +105,5 @@ export default function LandingPage() {
         </p>
       </footer>
     </div>
-  );
-}
-
-function MountainIcon(props: any) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
-    </svg>
   );
 }

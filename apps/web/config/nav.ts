@@ -11,8 +11,4 @@ export const categories = [
     href: "/information",
     label: "Personal Information",
   },
-  {
-    href: "/logs",
-    label: "Action Logs",
-  },
 ] as const;

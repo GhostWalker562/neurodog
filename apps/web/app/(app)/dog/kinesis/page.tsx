@@ -12,10 +12,13 @@ import {
 import useNeurosity from "@/lib/api/stores/neurosity";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Activity } from "lucide-react";
+import { Activity, Lightbulb } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { AvailableActions } from "@/components/AvailableActions";
+import { Avatar } from "@/components/ui/avatar";
+import Logo from "@/components/assets/Logo";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface KinesisPageProps {}
 
@@ -49,7 +52,7 @@ function KinesisPage({}: KinesisPageProps): JSX.Element {
     const unsubscribeKinesis = neurosity.kinesis("tongue").subscribe((data) => {
       // Check if the dispatch was made less than 5 seconds away from the next
       if (Date.now() - lastTime > 5000) {
-        toast.success("Dispatched action");
+        toast.success("Service dog is reacting to your emotions.");
         setDispatches(dispatches + 1);
       }
       lastTime = Date.now();
@@ -87,22 +90,24 @@ function KinesisPage({}: KinesisPageProps): JSX.Element {
             </Button>
           </div>
         </div>
+
+        <Tabs defaultValue="caretaker" className="space-y-4">
+          <TabsList>
+            <TabsTrigger value="caretaker">Caretaker Mode</TabsTrigger>
+            <TabsTrigger value="exercise" disabled>
+              Exercise Mode
+            </TabsTrigger>
+            <TabsTrigger value="safety" disabled>
+              Safety Mode
+            </TabsTrigger>
+          </TabsList>
+        </Tabs>
+
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Dispatches</CardTitle>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                className="h-4 w-4 text-muted-foreground"
-              >
-                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-              </svg>
+              <Lightbulb className="w-4 h-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{dispatches}</div>
@@ -111,9 +116,10 @@ function KinesisPage({}: KinesisPageProps): JSX.Element {
               </p>
             </CardContent>
           </Card>
+
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Confidence</CardTitle>
+              <CardTitle className="text-sm font-medium">Calmness</CardTitle>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -133,7 +139,9 @@ function KinesisPage({}: KinesisPageProps): JSX.Element {
               <div className="text-2xl font-bold">
                 {(confidence * 100).toLocaleString()}%
               </div>
-              <p className="text-xs text-muted-foreground">Calmness</p>
+              <p className="text-xs text-muted-foreground">
+                How are you feeling
+              </p>
             </CardContent>
           </Card>
 
@@ -162,19 +170,34 @@ function KinesisPage({}: KinesisPageProps): JSX.Element {
               </p>
             </CardContent>
           </Card>
+
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Your Dog</CardTitle>
+              <Logo className="w-4 h-4" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">Neurosity Spot</div>
+              <p className="text-xs text-muted-foreground">
+                Capable of understanding your emotions
+              </p>
+            </CardContent>
+          </Card>
         </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-          <Card className="col-span-4">
+          <Card className="col-span-4 border-green-400 bg-green-200/10">
             <CardHeader>
               <CardTitle className="flex justify-between">
-                <h1>Calmness</h1>
-                <h1>{(confidence * 100).toLocaleString()}%</h1>
+                <h1>Emotional Analysis</h1>
+                <h1 className="text-green-400">
+                  {(probability * 100).toLocaleString()}%
+                </h1>
               </CardTitle>
             </CardHeader>
             <CardContent className="pl-2">
               <ProbabilityPie probability={probability} />
               <p className="ml-4 text-xs text-muted-foreground">
-                Your calmness level
+                Are you feeling sad? Neurodog will assist you if you need help.
               </p>
             </CardContent>
           </Card>

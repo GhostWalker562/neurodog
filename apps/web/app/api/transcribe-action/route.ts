@@ -11,7 +11,6 @@ export interface TranscribeActionRequest {
     | "go-to-landing"
     | "toggle-theme"
     | "open-personal-information-page"
-    | "open-action-logs"
     | "unknown";
 }
 
@@ -52,7 +51,6 @@ export async function POST(request: Request): Promise<Response> {
                 "open-dog-services",
                 "open-home-page",
                 "open-personal-information-page",
-                "open-action-logs",
                 "go-to-landing",
                 "toggle-theme",
                 "logout",
