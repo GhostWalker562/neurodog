@@ -30,7 +30,7 @@ export async function POST(request: Request): Promise<Response> {
   messages.push({
     role: "system",
     content:
-      "The user is currently using a frontend application and wants to do an action. It is speaking to you through the backend and wants you to understand the action it wants to take. If you don't understand, return a tool call with the argument unknown",
+      "The user is currently using a frontend application and wants to do an action. It is speaking to you through the backend and wants you to understand the action it wants to take. If you don't understand, return a tool call with the argument unknown. For the profile screen that is accessible through the bottom navigation bar, it will show the profile picture of the user and under it will say “Hello ___ “ for the user. It will include the user’s demographic information and also important conditions and disabilities that the user has. It will also include emergency contacts that will be automatically contacted incase of an emergency. Inside of the deliveries page which is clickable from the home page it will show a log of all of the deliveries brought to the user from the spot dog",
   });
   messages.push({ role: "user", content: message });
 

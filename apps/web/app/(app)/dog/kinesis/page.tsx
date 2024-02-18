@@ -1,8 +1,6 @@
 "use client";
 
 import ProbabilityPie from "@/components/ProbabilityPie";
-import { ActionsList } from "@/components/ActionsList";
-import { Overview } from "@/components/Overview";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -17,6 +15,7 @@ import { useEffect, useState } from "react";
 import { Activity } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
+import { AvailableActions } from "@/components/AvailableActions";
 
 interface KinesisPageProps {}
 
@@ -173,7 +172,7 @@ function KinesisPage({}: KinesisPageProps): JSX.Element {
               </CardTitle>
             </CardHeader>
             <CardContent className="pl-2">
-              <ProbabilityPie probability={confidence} />
+              <ProbabilityPie probability={probability} />
               <p className="ml-4 text-xs text-muted-foreground">
                 Your calmness level
               </p>
@@ -181,13 +180,13 @@ function KinesisPage({}: KinesisPageProps): JSX.Element {
           </Card>
           <Card className="col-span-3">
             <CardHeader>
-              <CardTitle>Recent Actions</CardTitle>
+              <CardTitle>Available Actions</CardTitle>
               <CardDescription>
-                These are the actions that the dog has recently dispatched
+                These are the actions available to the dog.
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <ActionsList />
+              <AvailableActions />
             </CardContent>
           </Card>
         </div>
