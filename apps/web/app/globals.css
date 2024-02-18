@@ -6,6 +6,14 @@
   @apply flex justify-center items-center;
 }
 
+.animate-in-slide-top {
+  @apply animate-in fade-in slide-in-from-top-8 duration-700 ease-in-out;
+}
+
+.animate-in-slide-top-dashboard {
+  @apply animate-in fade-in slide-in-from-top-4 duration-200 ease-in-out;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

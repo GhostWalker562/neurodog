@@ -19,7 +19,7 @@ async function InformationPage({}: InformationPageProps) {
   if (!user) return redirect("/login");
 
   return (
-    <div className="center py-8">
+    <div className="center py-8 animate-in-slide-top-dashboard">
       <div className="max-w-lg  p-4 rounded-lg w-full">
         <Card>
           <CardHeader className="flex flex-col gap-1">

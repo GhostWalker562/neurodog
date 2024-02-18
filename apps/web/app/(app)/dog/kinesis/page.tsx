@@ -72,7 +72,7 @@ function KinesisPage({}: KinesisPageProps): JSX.Element {
   }, [dispatches, isConnected, neurosity]);
 
   return (
-    <div className="">
+    <div className="animate-in-slide-top-dashboard">
       <div className="flex-1 space-y-4 p-8 pt-6">
         <div className="flex items-center justify-between space-y-2">
           <h2 className="text-3xl font-bold tracking-tight">Service Dog</h2>

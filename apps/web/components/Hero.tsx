@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export function Hero() {
   return (
-    <div className="pb-16 pt-20 text-center lg:pt-32">
+    <div className="pb-16 pt-20 text-center lg:pt-32 animate-in-slide-top">
       <h1 className="mx-auto max-w-4xl font-display text-5xl font-medium tracking-tight dark:text-white/80 text-slate-900/80 sm:text-7xl">
         Caretaking{" "}
         <span className="relative whitespace-nowrap text-primary">
