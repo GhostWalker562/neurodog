@@ -7,4 +7,12 @@ export const categories = [
     href: "/dog",
     label: "Service Dog",
   },
+  {
+    href: "/information",
+    label: "Personal Information",
+  },
+  {
+    href: "/logs",
+    label: "Action Logs",
+  },
 ] as const;

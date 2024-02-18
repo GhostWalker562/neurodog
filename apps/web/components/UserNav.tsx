@@ -49,7 +49,7 @@ export function UserNav({ user }: UserNavProps) {
             <ModeToggle />
           </div>
         </DropdownMenuLabel>
-        <div className="block md:hidden">
+        <div className="block lg:hidden">
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             {categories.map((category) => (

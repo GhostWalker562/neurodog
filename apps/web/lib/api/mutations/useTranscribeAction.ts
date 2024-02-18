@@ -31,6 +31,10 @@ function useTranscribeAction() {
           return push("/");
         case "open-dog-services":
           return push("/dog");
+        case "open-personal-information-page":
+          return push("/information");
+        case "open-action-logs":
+          return push("/logs");
         case "toggle-theme":
           setTheme(theme === "dark" ? "light" : "dark");
           return;

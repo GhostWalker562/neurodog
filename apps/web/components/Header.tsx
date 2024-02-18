@@ -17,7 +17,7 @@ function Header({ user }: HeaderProps): JSX.Element {
           Neurodog
         </div>
 
-        <MainNav className="mx-6 hidden md:block" />
+        <MainNav className="mx-6 hidden lg:block" />
         <div className="ml-auto flex items-center space-x-4">
           <VoiceActions />
           <UserNav user={user} />

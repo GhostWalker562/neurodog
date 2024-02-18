@@ -10,6 +10,8 @@ export interface TranscribeActionRequest {
     | "logout"
     | "go-to-landing"
     | "toggle-theme"
+    | "open-personal-information-page"
+    | "open-action-logs"
     | "unknown";
 }
 
@@ -49,9 +51,11 @@ export async function POST(request: Request): Promise<Response> {
               enum: [
                 "open-dog-services",
                 "open-home-page",
-                "logout",
+                "open-personal-information-page",
+                "open-action-logs",
                 "go-to-landing",
                 "toggle-theme",
+                "logout",
                 "unknown",
               ],
             },

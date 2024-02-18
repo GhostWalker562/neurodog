@@ -1,7 +1,7 @@
 "use client";
 
 import ProbabilityPie from "@/components/ProbabilityPie";
-import { ContactsList } from "@/components/ContactsList";
+import { ActionsList } from "@/components/ActionsList";
 import { Overview } from "@/components/Overview";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,17 +15,17 @@ import useNeurosity from "@/lib/api/stores/neurosity";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Activity } from "lucide-react";
-import { set } from "zod";
-import useServiceDog from "@/lib/api/stores/serviceDog";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 
 interface KinesisPageProps {}
 
 function KinesisPage({}: KinesisPageProps): JSX.Element {
   const [isConnected, setIsConnected] = useState(false);
+  const [confidence, setConfidence] = useState(0);
+  const [probability, setProbability] = useState(0);
   const [dispatches, setDispatches] = useState(0);
   const [signal, setSignal] = useState("Unconnected");
-  const [confidence, setConfidence] = useState(0);
   const { push } = useRouter();
   const { neurosity } = useNeurosity();
 
@@ -36,6 +36,8 @@ function KinesisPage({}: KinesisPageProps): JSX.Element {
   const onKinesis = async () => setIsConnected(true);
 
   useEffect(() => {
+    let lastTime = Date.now();
+
     if (!neurosity || !isConnected) return;
 
     const unsubscribeCalm = neurosity.calm().subscribe((data) => {
@@ -45,12 +47,27 @@ function KinesisPage({}: KinesisPageProps): JSX.Element {
     const unsubscribeSignal = neurosity.signalQuality().subscribe((data) => {
       setSignal(data[4].status);
     });
+    const unsubscribeKinesis = neurosity.kinesis("tongue").subscribe((data) => {
+      // Check if the dispatch was made less than 5 seconds away from the next
+      if (Date.now() - lastTime > 5000) {
+        toast.success("Dispatched action");
+        setDispatches(dispatches + 1);
+      }
+      lastTime = Date.now();
+    });
+    const unsubscribePredictions = neurosity
+      .predictions("tongue")
+      .subscribe((data) => {
+        setProbability(data.probability);
+      });
 
     return () => {
       unsubscribeCalm?.unsubscribe();
       unsubscribeSignal?.unsubscribe();
+      unsubscribeKinesis?.unsubscribe();
+      unsubscribePredictions?.unsubscribe();
     };
-  }, [isConnected, neurosity]);
+  }, [dispatches, isConnected, neurosity]);
 
   return (
     <div className="">
@@ -90,7 +107,9 @@ function KinesisPage({}: KinesisPageProps): JSX.Element {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{dispatches}</div>
-              <p className="text-xs text-muted-foreground">Actions taken</p>
+              <p className="text-xs text-muted-foreground">
+                Actions taken ({(probability * 100).toLocaleString()}%)
+              </p>
             </CardContent>
           </Card>
           <Card>
@@ -113,7 +132,7 @@ function KinesisPage({}: KinesisPageProps): JSX.Element {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
-                {confidence.toLocaleString()}%
+                {(confidence * 100).toLocaleString()}%
               </div>
               <p className="text-xs text-muted-foreground">Calmness</p>
             </CardContent>
@@ -150,7 +169,7 @@ function KinesisPage({}: KinesisPageProps): JSX.Element {
             <CardHeader>
               <CardTitle className="flex justify-between">
                 <h1>Calmness</h1>
-                <h1>{confidence.toLocaleString()}%</h1>
+                <h1>{(confidence * 100).toLocaleString()}%</h1>
               </CardTitle>
             </CardHeader>
             <CardContent className="pl-2">
@@ -168,7 +187,7 @@ function KinesisPage({}: KinesisPageProps): JSX.Element {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <ContactsList />
+              <ActionsList />
             </CardContent>
           </Card>
         </div>

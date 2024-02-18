@@ -1,6 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
-export function ContactsList() {
+export function ActionsList() {
   return (
     <div className="space-y-8">
       <div className="flex items-center">
