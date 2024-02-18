@@ -16,6 +16,8 @@
     "db:check": "drizzle-kit check:mysql"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.0",
+    "@hookform/resolvers": "^3.3.4",
     "@lucia-auth/adapter-drizzle": "1.0.2",
     "@neurosity/sdk": "^6.5.10",
     "@planetscale/database": "^1.16.0",
@@ -36,6 +38,7 @@
     "cmdk": "^0.2.1",
     "drizzle-orm": "^0.29.3",
     "drizzle-zod": "^0.5.1",
+    "gsap": "^3.12.5",
     "lucia": "3.0.1",
     "lucide-react": "^0.331.0",
     "mysql2": "^3.9.1",
