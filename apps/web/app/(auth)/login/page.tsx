@@ -14,7 +14,7 @@ interface LoginPageProps {}
 
 function LoginPage({}: LoginPageProps): JSX.Element {
   return (
-    <div className="w-full h-screen relative center">
+    <div className="w-full h-screen relative center animate-in-slide-top-card">
       <Card className="max-w-xs bg-card">
         <CardHeader className="flex flex-col gap-1">
           <div className="flex center mb-2 text-lg">

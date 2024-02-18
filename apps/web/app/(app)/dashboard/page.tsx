@@ -14,6 +14,9 @@ import { validateRequest } from "@/lib/lucia";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 import { redirect } from "next/navigation";
+import { FileQuestion, MessageCircleQuestion } from "lucide-react";
+import { Dialog, DialogContent, DialogTrigger } from "@radix-ui/react-dialog";
+import GuidedTutorial from "@/components/GuidedTutorial";
 
 export default async function DashboardPage() {
   const { user } = await validateRequest();
@@ -48,35 +51,14 @@ export default async function DashboardPage() {
           </Card>
 
           <Card className="flex items-center">
-            <div className="ml-4 border overflow-clip rounded-md">
-              <Image
-                className="h-24 w-24  rounded-md object-cover "
-                src={"https://i.ibb.co/nL5kMxR/spot-mini-aker-bp-2.webp"}
-                width={96}
-                height={96}
-                alt={""}
-              />
-            </div>
-
-            <div>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Battery</CardTitle>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  className="h-4 w-4 text-muted-foreground"
-                >
-                  <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-                </svg>
+            <div className="flex-1 h-full justify-between flex flex-col">
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 w-full">
+                <CardTitle className="text-sm font-medium">
+                  Guided Interactive Tutorial
+                </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">80.3%</div>
-                <p className="text-xs text-muted-foreground">Since last hour</p>
+                <GuidedTutorial />
               </CardContent>
             </div>
           </Card>

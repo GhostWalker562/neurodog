@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { validateRequest } from "@/lib/lucia";
 import { redirect } from "next/navigation";
@@ -12,9 +13,10 @@ export default async function AppLayout({ children }: AppLayoutProps) {
   if (!session) return redirect("/login");
 
   return (
-    <main className="w-full h-screen">
+    <main className="w-full h-screen flex flex-col">
       <Header user={user} />
-      {children}
+      <div className="flex-1">{children}</div>
+      <Footer />
     </main>
   );
 }

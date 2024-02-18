@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import Image from "next/image";
+import Footer from "@/components/Footer";
 
 export default function LandingPage() {
   return (
@@ -102,11 +103,7 @@ export default function LandingPage() {
           </div>
         </section>
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-        <p className="text-xs text-neutral-500 dark:text-neutral-400">
-          © 2024 Neurodog. All rights reserved.
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 }

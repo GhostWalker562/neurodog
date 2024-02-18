@@ -24,7 +24,7 @@ async function InformationPage({}: InformationPageProps) {
         <Card>
           <CardHeader className="flex flex-col gap-1">
             <div className="flex items-center gap-2 mb-2 text-lg">
-              <Shape3 className="w-5 h-5 mr-1" /> Neurosity
+              <Shape3 className="w-5 h-5 mr-1" /> Neurocard
             </div>
             <CardTitle className="text-2xl">
               Personal Information Card
