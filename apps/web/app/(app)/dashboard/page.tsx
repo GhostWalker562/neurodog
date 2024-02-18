@@ -40,7 +40,7 @@ export default async function DashboardPage() {
         </div>
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          <Card className=" col-span-2 max-h-32 overflow-clip float-left align-top">
+          {/* <Card className=" col-span-2 max-h-32 overflow-clip float-left align-top">
             <Image
               className="w-full h-full object-cover object-top align-top opacity-80"
               src={"https://i.ibb.co/m0K515z/japanese.jpg"}
@@ -48,6 +48,19 @@ export default async function DashboardPage() {
               width={1500}
               height={1000}
             />
+          </Card> */}
+
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Your Dog</CardTitle>
+              <Logo className="w-4 h-4" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">Neurosity Spot</div>
+              <p className="text-xs text-muted-foreground">
+                Capable of understanding your emotions
+              </p>
+            </CardContent>
           </Card>
 
           <Card className="flex items-center">
@@ -61,19 +74,6 @@ export default async function DashboardPage() {
                 <GuidedTutorial />
               </CardContent>
             </div>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Your Dog</CardTitle>
-              <Logo className="w-4 h-4" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">Neurosity Spot</div>
-              <p className="text-xs text-muted-foreground">
-                Capable of understanding your emotions
-              </p>
-            </CardContent>
           </Card>
         </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">

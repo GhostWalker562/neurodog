@@ -16,7 +16,7 @@ function GuidedTutorial({}: GuidedTutorialProps): JSX.Element {
       </DialogTrigger>
       <DialogContent className="max-w-screen-lg">
         <iframe
-          style={{ minHeight: "720px" }}
+          style={{ minHeight: "640px" }}
           src="https://app.tango.us/app/embed/24cf8114-b8b2-44c2-b58e-cce536426dcb"
           sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin"
           security="restricted"

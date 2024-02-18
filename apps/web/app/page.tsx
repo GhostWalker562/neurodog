@@ -64,8 +64,8 @@ export default function LandingPage() {
                     "https://i.ibb.co/2yNYd6w/Screenshot-2024-02-18-at-12-02-30-AM.png"
                   }
                   alt="Robot Dog looking at  guy"
-                  width={500}
-                  height={300}
+                  width={1080}
+                  height={1080}
                 />
               </div>
               <div className="flex flex-col justify-center space-y-4">

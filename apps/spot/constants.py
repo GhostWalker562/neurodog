@@ -17,6 +17,7 @@ TOOLS = [
                             "stand-up",
                             "bow",
                             "unknown",
+                            "listen-to-brain",
                         ],
                     },
                 },

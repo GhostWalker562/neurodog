@@ -4,7 +4,8 @@ from spot_controller import SpotController
 
 def sit(controller: SpotController):
     speak("I'm sitting down!")
-    controller.move_head_in_points(yaws=[0], pitches=[0], rolls=[0])
+    controller.move_head_in_points(yaws=[1], pitches=[-20], rolls=[0])
+    controller.move_head_in_points(yaws=[0], pitches=[-20], rolls=[0])
     return
 
 

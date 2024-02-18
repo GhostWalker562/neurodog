@@ -25,6 +25,6 @@ def speak(content):
 def listen():
     # Listen to the user for an action
     print("Listening for audio")
-    cmd = f'arecord -vv --format=cd --device={os.environ["AUDIO_INPUT_DEVICE"]} -r 48000 --duration=5 -c 1 {TEMP_AUDIO_FILE_NAME}'
+    cmd = f'arecord -vv --format=cd --device={os.environ["AUDIO_INPUT_DEVICE"]} -r 48000 --duration=3 -c 1 {TEMP_AUDIO_FILE_NAME}'
     print("Capturing audio")
     os.system(cmd)

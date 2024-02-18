@@ -46,6 +46,7 @@
     "next": "14.1.0",
     "next-themes": "^0.2.1",
     "openai": "^4.28.0",
+    "posthog-js": "^1.106.0",
     "react": "^18.2",
     "react-dom": "^18.2",
     "react-hook-form": "^7.50.1",
