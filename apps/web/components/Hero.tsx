@@ -22,8 +22,9 @@ export function Hero() {
         for small businesses.
       </h1>
       <p className="mx-auto mt-6 max-w-2xl text-lg tracking-tight dark:text-white/80 text-slate-700/70">
-        Most bookkeeping software is accurate, but hard to use. We make the
-        opposite trade-off, and hope you don’t get audited.
+        Empowering individuals with disabilities, our EEG-powered robotics
+        respond to brain commands, revolutionizing assistance and amplifying
+        independence.
       </p>
       <div className="mt-10 flex justify-center">
         <Link href="/login">

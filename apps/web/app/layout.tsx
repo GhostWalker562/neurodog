@@ -11,6 +11,8 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Neurodog",
   description: "Emotional robotic service dogs assisting those in need",
+  metadataBase: new URL("https://neurodog.vercel.app/"),
+  openGraph: { images: "/opengraph-image.png" },
 };
 
 export default function RootLayout({

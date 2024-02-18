@@ -39,7 +39,7 @@ export default async function DashboardPage() {
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           <Card className=" col-span-2 max-h-32 overflow-clip float-left align-top">
             <Image
-              className="w-full h-full object-cover object-top align-top "
+              className="w-full h-full object-cover object-top align-top opacity-80"
               src={"https://i.ibb.co/m0K515z/japanese.jpg"}
               alt="Picture of the author"
               width={1500}

@@ -6,7 +6,7 @@ import { useTranscript } from "@/lib/api/stores/recordings";
 import useRecord from "@/lib/api/useRecord";
 import { cn } from "@/lib/utils";
 import { Mic, Text } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import {
   CommandDialog,
@@ -25,6 +25,25 @@ function VoiceActions({}: VoiceActionsProps): JSX.Element {
   const { startRecording, stopRecording, isRecording } = useRecord();
   const { transcript, reset } = useTranscript();
   const { mutate, isPending } = useTranscribeAction();
+
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "j" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        if (!open) {
+          reset();
+          startRecording();
+        } else {
+          if (transcript) mutate(transcript);
+          stopRecording();
+        }
+        setOpen((open) => !open);
+      }
+    };
+
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, [mutate, open, reset, startRecording, stopRecording, transcript]);
 
   return (
     <>
