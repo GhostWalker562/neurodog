@@ -11,7 +11,7 @@ export function MainNav({
 }: React.HTMLAttributes<HTMLElement>) {
   const pathname = usePathname();
 
-  const isPathSelected = (href: string) => pathname === href;
+  const isPathSelected = (href: string) => pathname.includes(href);
 
   return (
     <nav

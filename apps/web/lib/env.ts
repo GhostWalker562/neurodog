@@ -5,6 +5,7 @@ const envSchema = z.object({
   GITHUB_CLIENT_ID: z.string().min(1),
   GITHUB_CLIENT_SECRET: z.string().min(1),
   NODE_ENV: z.string().min(1).optional(),
+  OPENAI_API_KEY: z.string().min(1),
 });
 
 export type Env = z.infer<typeof envSchema>;

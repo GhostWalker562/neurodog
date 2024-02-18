@@ -5,9 +5,11 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import logout from "./logout";
 import { toast } from "sonner";
+import { useTheme } from "next-themes";
 
 function useTranscribeAction() {
   const { push } = useRouter();
+  const { theme, setTheme } = useTheme();
 
   return useMutation({
     mutationFn: async (transcript: string) => {
@@ -24,11 +26,14 @@ function useTranscribeAction() {
           return push("/dashboard");
         case "logout":
           await logout();
-          break;
+          return;
         case "go-to-landing":
           return push("/");
         case "open-dog-services":
           return push("/dog");
+        case "toggle-theme":
+          setTheme(theme === "dark" ? "light" : "dark");
+          return;
       }
 
       toast("Unknown command");
